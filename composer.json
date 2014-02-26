@@ -1,0 +1,22 @@
+{
+    "name": "deseretdigital/knobby",
+    "type": "project",
+    "description": "Manage knobs and levers for feature control",
+    "autoload": {
+        "psr-4": {
+            "DDM\\Knobby\\": "src/DDM/Knobby"
+        }
+    },
+
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*",
+        "phpunit/dbunit": ">=1.2",
+        "phpunit/php-invoker": "*",
+        "phpunit/phpunit-selenium": ">=1.2",
+        "phpunit/phpunit-story": "*",
+
+        "mockery/mockery": "dev-master@dev",
+
+        "raveren/kint": "dev-1.0.0-wip"
+    }
+}
