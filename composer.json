@@ -4,7 +4,7 @@
     "description": "Manage knobs and levers for feature control",
     "autoload": {
         "psr-4": {
-            "DDM\\Knobby\\": "src/DDM/Knobby"
+            "DDM\\Knobby\\": "src/"
         }
     },
 
