@@ -51,6 +51,12 @@ class Knobby
         $retVal = false;
         if(isset($this->flags[$name]) && $this->flags[$name]->test($value)){
             $retVal = true;
+            foreach($this->flags[$name]['dependsOn'] as $dependencyName){
+                if(!$this->test($dependencyName)){
+                    $retVal = false;
+                    break;
+                }
+            }
         }
         return $retVal;
     }
