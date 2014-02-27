@@ -4,19 +4,24 @@ namespace DDM\Knobby;
 
 class Knobby
 {
-    protected $knobs = null;
-    protected $levers = null;
+    protected $flags = array();
 
     public function __construct(){
 
     }
 
     public function loadConfigArray(array $config){
-        foreach($config as $type => $items){
-            $function_name = 'set'.ucfirst($type);
-            if(method_exists($this, $function_name)){
-                $this->{$function_name}($items);
-            }
+        foreach($config as $item){
+            $flag = FlagFactory::createFlag($item);
+            $this->addFlag($flag);
+        }
+    }
+
+    public function addFlag(Flag $flag){
+        if($flag->getName()){
+            $this->flags[$flag->getName()] = $flag;
+        }else{
+            trigger_error('Flag must have a name');
         }
     }
 
@@ -25,42 +30,28 @@ class Knobby
         $this->loadConfigArray($config);
     }
 
-    public function knobExists($name){
-        return isset($this->knobs[$name]);
-    }
-
-    public function leverExists($name){
-        return isset($this->levers[$name]);
-    }
-
-    protected function setKnobs(array $knobConfigs){
-        $knobs = array();
-        foreach($knobConfigs as $name => $knobConfig){
-            $knobs[$name] = new Knob($knobConfig);
-        }
-        $this->knobs = $knobs;
-    }
- 
-    protected function setLevers(array $leverConfigs){
-        $levers = array();
-        foreach($leverConfigs as $name => $leverConfig){
-            $levers[$name] = new Lever($leverConfig);
-        }
-        $this->levers = $levers;
+    public function flagExists($name){
+        return isset($this->flags[$name]);
     }
 
     public function toArray(){
-        $retVal = json_decode($this->toJson(), true);
+        $retVal = array();
+        foreach($this->flags as $flag){
+            $retVal[]=$flag->toArray();
+        }
         return $retVal;
     }
 
     public function toJson(){
-        $retVal = array(
-            'knobs' => $this->knobs,
-            'levers' => $this->levers,
-        );
-        $retVal = json_encode($retVal);
+        $retVal = json_encode(array_values($this->flags));
         return $retVal;
     }
 
+    public function test($name, $value = null){
+        $retVal = false;
+        if(isset($this->flags[$name]) && $this->flags[$name]->test($value)){
+            $retVal = true;
+        }
+        return $retVal;
+    }
 }
