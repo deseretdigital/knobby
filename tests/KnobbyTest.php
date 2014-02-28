@@ -9,7 +9,7 @@ class KnobbyTest extends PHPUnit_Framework_TestCase
                 'type' => 'knob',
                 'min' => 10,
                 'max' => 50,
-                'value' => 15,    
+                'threshold' => 15,    
             ),
             array(
                 'name' => 'testLever',
@@ -31,7 +31,7 @@ class KnobbyTest extends PHPUnit_Framework_TestCase
                 'type' => 'knob',
                 'min' => 10,
                 'max' => 50,
-                'value' => 15,    
+                'threshold' => 15,    
             ),
             array(
                 'name' => 'testLever',
@@ -54,7 +54,8 @@ class KnobbyTest extends PHPUnit_Framework_TestCase
                 'type' => 'knob',
                 'min' => 10,
                 'max' => 50,
-                'value' => 15,
+                'threshold' => 15,
+                'userValue' => null,    
                 'dependsOn' => [],                
             ),
             array(
@@ -77,7 +78,8 @@ class KnobbyTest extends PHPUnit_Framework_TestCase
                 'type' => 'knob',
                 'min' => 10,
                 'max' => 50,
-                'value' => 15,    
+                'threshold' => 15,
+                'userValue' => null,    
                 'dependsOn' => [],    
             ),
             array(
@@ -108,7 +110,7 @@ class KnobbyTest extends PHPUnit_Framework_TestCase
                 'type' => 'knob',
                 'min' => 10,
                 'max' => 50,
-                'value' => 15,    
+                'threshold' => 15,    
             ),
         );
         $knobby = new \DDM\Knobby\Knobby();
