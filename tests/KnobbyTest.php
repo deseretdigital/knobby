@@ -164,5 +164,62 @@ class KnobbyTest extends PHPUnit_Framework_TestCase
         $expected = false;
         $this->assertEquals($expected, $actual, 'lever should not work since parent is false');
     }
+    
+    public function testLeverGrandParentOff(){
+        $config = array(
+            array(
+                'name' => 'testGrandParentLever',
+                'type' => 'lever',
+                'on'   => false,
+            ),
+            array(
+                'name' => 'testParentLever',
+                'type' => 'lever',
+                'on'   => true,
+                'dependsOn' => ['testGrandParentLever'],
+            ),
+            array(
+                'name' => 'testChildLever',
+                'type' => 'lever',
+                'on'   => true,
+                'dependsOn' => ['testParentLever'],
+            ),
+        );
 
+        $knobby = new \DDM\Knobby\Knobby();
+        $knobby->loadConfigArray($config);
+
+        $actual = $knobby->test('testChildLever');
+        $expected = false;
+        $this->assertEquals($expected, $actual, 'lever should not work since grandparent is false');
+    }
+
+    public function testLeverParentOffGrandParentOn(){
+        $config = array(
+            array(
+                'name' => 'testGrandParentLever',
+                'type' => 'lever',
+                'on'   => true,
+            ),
+            array(
+                'name' => 'testParentLever',
+                'type' => 'lever',
+                'on'   => false,
+                'dependsOn' => ['testGrandParentLever'],
+            ),
+            array(
+                'name' => 'testChildLever',
+                'type' => 'lever',
+                'on'   => true,
+                'dependsOn' => ['testParentLever'],
+            ),
+        );
+
+        $knobby = new \DDM\Knobby\Knobby();
+        $knobby->loadConfigArray($config);
+
+        $actual = $knobby->test('testChildLever');
+        $expected = false;
+        $this->assertEquals($expected, $actual, 'lever should not work since grandparent is false');
+    }    
 }
