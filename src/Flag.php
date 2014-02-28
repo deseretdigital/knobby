@@ -98,6 +98,14 @@ abstract class Flag implements \ArrayAccess, \JsonSerializable
         $this->name = $name;
     }
 
+    public function setDependsOn(array $dependencies){
+        $this->data['dependsOn'] = $dependencies;
+    }
+
+    public function getDependsOn(){
+        return $this->data['dependsOn'];
+    }
+
     /**
      * Check to see if feature should be used
      * @param  mixed $value 
