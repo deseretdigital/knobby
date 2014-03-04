@@ -19,7 +19,8 @@ $config = array(
         'on' => false,
         'type' => 'lever',
     ),
-)};
+);
+
 $knobby = new \DDM\Knobby\Knobby($config);
 
 if($knobby->test('testLever')){
