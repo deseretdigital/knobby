@@ -6,6 +6,6 @@ php:
   - hhvm
 
 before_script:
-  - composer install
+  - composer install --dev -o
 
-script: phpunit --configuration phpunit.xml.dist --coverage-text
+script: ./bin/phpunit --configuration phpunit.xml.dist --coverage-text
