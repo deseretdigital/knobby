@@ -59,8 +59,8 @@ $knobby = new \DDM\Knobby\Knobby($config);
 $userValue = 20;
 if ($knobby->test('testKnob', $userValue)) {
     /*
-    feature code here will not run, since the
-    user value is greater than the allowed value
+    feature code here will not run, since the user value is greater than the
+    allowed value
     */
 }
 ```
@@ -87,6 +87,60 @@ if ($knobby->test('testKnob')) {
     /*
     feature code here may or may not run depending on the value of the randomly
     generated test value between 10 and 50.
+    */
+}
+```
+
+### Gates
+
+A flag that always passes its test if it is unlocked. If the gate is locked, the
+flag's test only passes if supplied test value is true.
+
+```php
+include('./vendor/autoload.php');
+
+$config = array(
+    array(
+        'name' => 'lockedGate',
+        'type' => 'gate',
+        'locked' => true
+    ),
+    array(
+        'name' => 'unlockedGate',
+        'type' => 'gate',
+        'locked' => false
+    ),
+);
+
+$knobby = new \DDM\Knobby\Knobby($config);
+$isUserAdmin = false;
+
+if ($knobby->test('lockedGate', $isUserAdmin)) {
+    /*
+    feature code here will not run, since the test value is false
+    */
+}
+
+if ($knobby->test('unlockedGate', $isUserAdmin)) {
+    /*
+    feature code here will run regardless of the test value because the gate is
+    unlocked
+    */
+}
+
+$isUserAdmin = true;
+
+if ($knobby->test('lockedGate', $isUserAdmin)) {
+    /*
+    feature code here will run even though the gate is locked since the test value
+    is true
+    */
+}
+
+if ($knobby->test('unlockedGate', $isUserAdmin)) {
+    /*
+    feature code here will run regardless of the test value because the gate is
+    unlocked
     */
 }
 ```

@@ -1,6 +1,8 @@
 <?php
 
-class LeverTest extends PHPUnit_Framework_TestCase
+namespace DDM\Knobby\Tests;
+
+class LeverTest extends \PHPUnit_Framework_TestCase
 {
     public function testDefaultOn(){
         $options = array();
