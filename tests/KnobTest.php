@@ -4,7 +4,7 @@ use DDM\Knobby\Knob as Knob;
 
 class KnobTest extends PHPUnit_Framework_TestCase
 {
- 
+
     public function testDefaultZero(){
         $options = array();
         $knob = new \DDM\Knobby\Knob($options);
@@ -15,7 +15,7 @@ class KnobTest extends PHPUnit_Framework_TestCase
     public function testMin(){
         $options = array(
             'min' => 10,
-            'max' => 100    
+            'max' => 100
         );
 
         $knob = new Knob($options);
@@ -28,7 +28,7 @@ class KnobTest extends PHPUnit_Framework_TestCase
     public function testMax(){
         $options = array(
             'min' => 10,
-            'max' => 100    
+            'max' => 100
         );
 
         $knob = new Knob($options);
@@ -40,7 +40,7 @@ class KnobTest extends PHPUnit_Framework_TestCase
     public function testMaxGreaterThanMin(){
        $options = array(
             'min' => 10,
-            'max' => 100    
+            'max' => 100
         );
 
         $knob = new Knob($options);
@@ -53,7 +53,7 @@ class KnobTest extends PHPUnit_Framework_TestCase
     public function testMinLessThanMax(){
        $options = array(
             'min' => 10,
-            'max' => 100    
+            'max' => 100
         );
 
         $knob = new Knob($options);
@@ -67,8 +67,7 @@ class KnobTest extends PHPUnit_Framework_TestCase
         $knob = new Knob();
         $knob['value'] = 30;
         $value = 40;
-        $expected = false;
-        $this->assertEquals($expected, $knob->test($value), 'Value greater than knob value should test false');
+        $this->assertFalse($knob->test($value), 'Value greater than knob value should test false');
     }
 
     public function testWithTrueRandomishValue(){
@@ -76,8 +75,7 @@ class KnobTest extends PHPUnit_Framework_TestCase
         $knob->shouldReceive('createRandomishValue')
              ->andReturn(20);
         $knob->setValue(30);
-        $expected = true;
-        $this->assertEquals($expected, $knob->test(), 'Randomish value less than knob value should test true');
+        $this->assertTrue($knob->test(), 'Randomish value less than knob value should test true');
     }
 
     public function testWithFalseRandomishValue(){
@@ -85,14 +83,13 @@ class KnobTest extends PHPUnit_Framework_TestCase
         $knob->shouldReceive('createRandomishValue')
              ->andReturn(40);
         $knob->setValue(30);
-        $expected = false;
-        $this->assertEquals($expected, $knob->test(), 'Randomish value greater than knob value should test false');
+        $this->assertFalse($knob->test(), 'Randomish value greater than knob value should test false');
     }
 
     public function testCreateRandomishValue(){
         $knob = new Knob();
         $value = $knob->createRandomishValue();
-        $this->assertTrue($value >= $knob['min'] && $value <= $knob['max']);        
+        $this->assertTrue($value >= $knob['min'] && $value <= $knob['max']);
     }
 
 }
