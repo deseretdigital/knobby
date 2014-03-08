@@ -2,6 +2,7 @@
     "name": "deseretdigital/knobby",
     "type": "project",
     "description": "Manage knobs and levers for feature control",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "DDM\\Knobby\\": "src/"
