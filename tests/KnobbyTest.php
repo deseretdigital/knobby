@@ -1,6 +1,8 @@
 <?php
 
-class KnobbyTest extends PHPUnit_Framework_TestCase
+namespace DDM\Knobby\Tests;
+
+class KnobbyTest extends \PHPUnit_Framework_TestCase
 {
     public function testLoadConfigArray(){
         $config = array(

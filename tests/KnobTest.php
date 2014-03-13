@@ -1,8 +1,10 @@
 <?php
 
+namespace DDM\Knobby\Tests;
+
 use DDM\Knobby\Knob as Knob;
 
-class KnobTest extends PHPUnit_Framework_TestCase
+class KnobTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testDefaultZero(){
