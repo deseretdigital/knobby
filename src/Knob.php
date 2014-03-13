@@ -57,6 +57,11 @@ class Knob extends Flag
         }
     }
 
+    public function getUserValue()
+    {
+        return $this['userValue'];
+    }
+
     public function setUserValue($value){
         $this->data['userValue'] = $value;
     }
