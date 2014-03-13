@@ -15,10 +15,22 @@ class Knob extends Flag
     protected $type = 'knob';
 
     public function test($userValue = null){
-        $userValue = $userValue?:$this['userValue'];
+        // If manually passed a userValue, save it for later
+        if($userValue)
+        {
+            $this['userValue'] = $userValue;
+        }
+        // get what we have stored
+        else
+        {
+            $userValue = $this['userValue'];
+        }
+
+        // if still null, generate random number
         if(is_null($userValue)){
             $this['userValue'] = $userValue = $this->createRandomishValue();
         }
+
         return ($userValue >= $this['min'] && $userValue <= $this['threshold']);
     }
 

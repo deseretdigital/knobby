@@ -101,4 +101,18 @@ class KnobTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($value >= $knob['min'] && $value <= $knob['max']);
     }
 
+    public function testUserValuePersistance()
+    {
+        $options = array(
+            'min' => 0,
+            'max' => 1000000,
+            'threshold' => 2
+        );
+        $knob = new Knob($options);
+        $this->assertTrue($knob->test(1), "Manual passed in userValue from test()");
+        $this->assertEquals(1, $knob->getUserValue(), "Value is still 20 after being passed in manually");
+        $this->assertTrue($knob->test(), "Still is true without manually passing in a userValue");
+
+    }
+
 }
