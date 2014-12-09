@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/deseretdigital/knobby.svg?branch=master)](https://travis-ci.org/deseretdigital/knobby)
+
 # knobby
 
 Provides SDK for using feature flags.
