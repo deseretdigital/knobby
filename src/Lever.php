@@ -4,10 +4,10 @@ namespace DDM\Knobby;
 
 class Lever extends Flag
 {
-    protected $data = [
+    protected $data = array(
         'on' => true,
         'dependsOn' => array(),
-    ];
+    );
 
     public function test($value = null)
     {

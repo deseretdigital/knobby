@@ -4,13 +4,13 @@ namespace DDM\Knobby;
 
 class Knob extends Flag
 {
-    protected $data = [
+    protected $data = array(
         'min' => 0,
         'max' => 100,
         'threshold' => 0,
         'userValue' => null,
         'dependsOn' => array(),
-    ];
+    );
 
     protected $type = 'knob';
 
