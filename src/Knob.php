@@ -9,7 +9,7 @@ class Knob extends Flag
         'max' => 100,
         'threshold' => 0,
         'userValue' => null,
-        'dependsOn' => [],
+        'dependsOn' => array(),
     ];
 
     protected $type = 'knob';

@@ -8,7 +8,7 @@ abstract class Flag implements \ArrayAccess
      * Flag specific data. defaults should be set in each subclass
      * @var array
      */
-    protected $data = [];
+    protected $data = array();
 
     /**
      * Name of flag

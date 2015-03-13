@@ -6,7 +6,7 @@ class Lever extends Flag
 {
     protected $data = [
         'on' => true,
-        'dependsOn' => [],
+        'dependsOn' => array(),
     ];
 
     public function test($value = null)
