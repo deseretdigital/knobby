@@ -1,15 +1,17 @@
 <?php
+namespace Knobby\Test;
 
-class KnobbyTest extends PHPUnit_Framework_TestCase
+class KnobbyTest extends \PHPUnit_Framework_TestCase
 {
-    public function testLoadConfigArray(){
+    public function testLoadConfigArray()
+    {
         $config = array(
             array(
                 'name' => 'testKnob',
                 'type' => 'knob',
                 'min' => 10,
                 'max' => 50,
-                'threshold' => 15,    
+                'threshold' => 15,
             ),
             array(
                 'name' => 'testLever',
@@ -24,14 +26,15 @@ class KnobbyTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $knobby->flagExists('testLever'), 'testLever should exist');
     }
 
-    public function testLoadConfigJson(){
-       $config = json_encode(array(
+    public function testLoadConfigJson()
+    {
+        $config = json_encode(array(
             array(
                 'name' => 'testKnob',
                 'type' => 'knob',
                 'min' => 10,
                 'max' => 50,
-                'threshold' => 15,    
+                'threshold' => 15,
             ),
             array(
                 'name' => 'testLever',
@@ -47,7 +50,8 @@ class KnobbyTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $knobby->flagExists('testLever'), 'testLever should exist');
     }
 
-    public function testToArray(){
+    public function testToArray()
+    {
         $config = array(
             array(
                 'name' => 'testKnob',
@@ -55,7 +59,7 @@ class KnobbyTest extends PHPUnit_Framework_TestCase
                 'min' => 10,
                 'max' => 50,
                 'threshold' => 15,
-                'userValue' => null,    
+                'userValue' => null,
                 'dependsOn' => [],
             ),
             array(
@@ -71,7 +75,8 @@ class KnobbyTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $knobby->toArray(), 'array should match config');
     }
 
-    public function testToJson(){
+    public function testToJson()
+    {
         $config = json_encode(array(
             array(
                 'name' => 'testKnob',
@@ -79,8 +84,8 @@ class KnobbyTest extends PHPUnit_Framework_TestCase
                 'min' => 10,
                 'max' => 50,
                 'threshold' => 15,
-                'userValue' => null,    
-                'dependsOn' => [], 
+                'userValue' => null,
+                'dependsOn' => [],
             ),
             array(
                 'name' => 'testLever',
@@ -96,14 +101,16 @@ class KnobbyTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $actual, 'json should match config');
     }
 
-    public function testUndefinedFlag(){
+    public function testUndefinedFlag()
+    {
         $knobby = new \DDM\Knobby\Knobby();
         $expected = false;
         $actual = $knobby->test('undefined');
         $this->assertEquals($expected, $actual, 'Undefined flags should return false');
     }
 
-    public function testTestKnob(){
+    public function testTestKnob()
+    {
         $config = array(
             array(
                 'name' => 'testKnob',
@@ -120,7 +127,8 @@ class KnobbyTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($actual, 'knob should work');
     }
 
-    public function testLeverParentOn(){
+    public function testLeverParentOn()
+    {
         $config = array(
             array(
                 'name' => 'testParentLever',
@@ -142,7 +150,8 @@ class KnobbyTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($actual, 'lever should work since parent and child are both true');
     }
 
-    public function testLeverParentOff(){
+    public function testLeverParentOff()
+    {
         $config = array(
             array(
                 'name' => 'testParentLever',
@@ -164,7 +173,8 @@ class KnobbyTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($actual, 'lever should not work since parent is false');
     }
 
-    public function testLeverGrandParentOff(){
+    public function testLeverGrandParentOff()
+    {
         $config = array(
             array(
                 'name' => 'testGrandParentLever',
@@ -192,7 +202,8 @@ class KnobbyTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($actual, 'lever should not work since grandparent is false');
     }
 
-    public function testLeverParentOffGrandParentOn(){
+    public function testLeverParentOffGrandParentOn()
+    {
         $config = array(
             array(
                 'name' => 'testGrandParentLever',
@@ -220,7 +231,8 @@ class KnobbyTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($actual, 'lever should not work since parent is false');
     }
 
-    public function testLeverParentOnGrandParentOn(){
+    public function testLeverParentOnGrandParentOn()
+    {
         $config = array(
             array(
                 'name' => 'testGrandParentLever',
@@ -247,5 +259,4 @@ class KnobbyTest extends PHPUnit_Framework_TestCase
         $actual = $knobby->test('testChildLever');
         $this->assertTrue($actual, 'lever should work since grandparent and parent are true');
     }
-
 }

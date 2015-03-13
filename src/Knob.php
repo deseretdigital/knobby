@@ -14,57 +14,61 @@ class Knob extends Flag
 
     protected $type = 'knob';
 
-    public function test($userValue = null){
+    public function test($userValue = null)
+    {
         // If manually passed a userValue, save it for later
-        if($userValue)
-        {
+        if ($userValue) {
             $this['userValue'] = $userValue;
         }
         // get what we have stored
-        else
-        {
+        else {
             $userValue = $this['userValue'];
         }
 
         // if still null, generate random number
-        if(is_null($userValue)){
+        if (is_null($userValue)) {
             $this['userValue'] = $userValue = $this->createRandomishValue();
         }
 
         return ($userValue >= $this['min'] && $userValue <= $this['threshold']);
     }
 
-    public function createRandomishValue(){
+    public function createRandomishValue()
+    {
         return rand($this['min'], $this['max']);
     }
 
-    public function setThreshold($threshold){
-        if($threshold < $this['min']){
+    public function setThreshold($threshold)
+    {
+        if ($threshold < $this['min']) {
             $this->data['threshold'] = $this['min'];
-        }else if($threshold > $this['max']){
+        } elseif ($threshold > $this['max']) {
             $this->data['threshold'] = $this['max'];
-        }else{
+        } else {
             $this->data['threshold'] = $threshold;
         }
     }
 
-    public function setMin($min){
+    public function setMin($min)
+    {
         $this->setMaxMin($this->data['max'], $min);
     }
 
-    public function setMax($max){
+    public function setMax($max)
+    {
         $this->setMaxMin($max, $this->data['min']);
     }
 
-    public function setMaxMin($max, $min){
-        if($max > $min){
+    public function setMaxMin($max, $min)
+    {
+        if ($max > $min) {
             $this->data['max'] = $max;
             $this->data['min'] = $min;
-        }else{
+        } else {
             $this->data['max'] = $min;
             $this->data['min'] = $max;
         }
-        if(isset($this['threshold'])){
+        if (isset($this['threshold'])) {
             $this->setthreshold($this['threshold']);
         }
     }
@@ -74,9 +78,8 @@ class Knob extends Flag
         return $this['userValue'];
     }
 
-    public function setUserValue($value){
+    public function setUserValue($value)
+    {
         $this->data['userValue'] = $value;
     }
-
-
 }
