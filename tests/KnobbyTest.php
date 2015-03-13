@@ -139,7 +139,7 @@ class KnobbyTest extends \PHPUnit_Framework_TestCase
                 'name' => 'testChildLever',
                 'type' => 'lever',
                 'on'   => true,
-                'dependsOn' => ['testParentLever'],
+                'dependsOn' => array('testParentLever'),
             ),
         );
 
@@ -162,7 +162,7 @@ class KnobbyTest extends \PHPUnit_Framework_TestCase
                 'name' => 'testChildLever',
                 'type' => 'lever',
                 'on'   => true,
-                'dependsOn' => ['testParentLever'],
+                'dependsOn' => array('testParentLever'),
             ),
         );
 
@@ -185,13 +185,13 @@ class KnobbyTest extends \PHPUnit_Framework_TestCase
                 'name' => 'testParentLever',
                 'type' => 'lever',
                 'on'   => true,
-                'dependsOn' => ['testGrandParentLever'],
+                'dependsOn' => array('testGrandParentLever'),
             ),
             array(
                 'name' => 'testChildLever',
                 'type' => 'lever',
                 'on'   => true,
-                'dependsOn' => ['testParentLever'],
+                'dependsOn' => array('testParentLever'),
             ),
         );
 
@@ -214,13 +214,13 @@ class KnobbyTest extends \PHPUnit_Framework_TestCase
                 'name' => 'testParentLever',
                 'type' => 'lever',
                 'on'   => false,
-                'dependsOn' => ['testGrandParentLever'],
+                'dependsOn' => array('testGrandParentLever'),
             ),
             array(
                 'name' => 'testChildLever',
                 'type' => 'lever',
                 'on'   => true,
-                'dependsOn' => ['testParentLever'],
+                'dependsOn' => array('testParentLever'),
             ),
         );
 
@@ -243,13 +243,13 @@ class KnobbyTest extends \PHPUnit_Framework_TestCase
                 'name' => 'testParentLever',
                 'type' => 'lever',
                 'on'   => true,
-                'dependsOn' => ['testGrandParentLever'],
+                'dependsOn' => array('testGrandParentLever'),
             ),
             array(
                 'name' => 'testChildLever',
                 'type' => 'lever',
                 'on'   => true,
-                'dependsOn' => ['testParentLever'],
+                'dependsOn' => array('testParentLever'),
             ),
         );
 
