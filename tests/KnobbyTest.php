@@ -60,13 +60,13 @@ class KnobbyTest extends \PHPUnit_Framework_TestCase
                 'max' => 50,
                 'threshold' => 15,
                 'userValue' => null,
-                'dependsOn' => [],
+                'dependsOn' => array(),
             ),
             array(
                 'name' => 'testLever',
                 'on' => false,
                 'type' => 'lever',
-                'dependsOn' => [],
+                'dependsOn' => array(),
             ),
         );
         $knobby = new \DDM\Knobby\Knobby();
@@ -85,13 +85,13 @@ class KnobbyTest extends \PHPUnit_Framework_TestCase
                 'max' => 50,
                 'threshold' => 15,
                 'userValue' => null,
-                'dependsOn' => [],
+                'dependsOn' => array(),
             ),
             array(
                 'name' => 'testLever',
                 'on' => false,
                 'type' => 'lever',
-                'dependsOn' => [],
+                'dependsOn' => array(),
             ),
         ));
         $knobby = new \DDM\Knobby\Knobby();
