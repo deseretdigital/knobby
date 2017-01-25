@@ -26,7 +26,8 @@ $config = array(
     ),
 );
 
-$knobby = new \DDM\Knobby\Knobby($config);
+$knobby = new \DDM\Knobby\Knobby();
+$knobby->loadConfigArray($config);
 
 if ($knobby->test('exampleOn')) {
     /*
