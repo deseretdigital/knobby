@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/695380aa86704755a77c8d18406f0a91)](https://www.codacy.com/app/hatfieldje/knobby?utm_source=github.com&utm_medium=referral&utm_content=deseretdigital/knobby&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/deseretdigital/knobby.svg?branch=master)](https://travis-ci.org/deseretdigital/knobby)
 
 # knobby
