@@ -34,7 +34,7 @@ abstract class Flag implements \ArrayAccess
      * @param  string $offset
      * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->data[$offset]);
     }
@@ -44,7 +44,7 @@ abstract class Flag implements \ArrayAccess
      * @param string $offset name of element
      * @param mixed  $value  value saved
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         $function_name = "set".ucfirst($offset);
         if (method_exists($this, $function_name)) {
@@ -56,7 +56,7 @@ abstract class Flag implements \ArrayAccess
      * Remove data element
      * @param string $offset name of element
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->data[$offset]);
     }
@@ -66,7 +66,7 @@ abstract class Flag implements \ArrayAccess
      * @param  string $offset name of element
      * @return mixed  value of element
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->offsetExists($offset) ? $this->data[$offset] : null;
     }
